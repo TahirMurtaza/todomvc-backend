@@ -162,7 +162,7 @@ class AuthService:
         if not person:
             raise APIException("Person does not exist.")
 
-        login_method = self.login_method_service.get_login_method_by_email_id(email.entity_id)
+        login_method = self.login_method_service.get_login_method_by_email_id(email_obj.entity_id)
         if not login_method:
             raise APIException("Login method does not exist.")
 
@@ -178,6 +178,7 @@ class AuthService:
                 },
                 "to_emails": [email],
             }
+            logger.info(password_reset_url)
             self.message_sender.send_message(self.EMAIL_TRANSMITTER_QUEUE_NAME, message)
 
 
@@ -187,7 +188,7 @@ class AuthService:
             method_type=LoginMethodType.EMAIL_PASSWORD,
             raw_password=password
         )
-
+        
         login_method_id = force_str(urlsafe_base64_decode(uidb64))
         login_method = self.login_method_service.get_login_method_by_id(login_method_id)
 
