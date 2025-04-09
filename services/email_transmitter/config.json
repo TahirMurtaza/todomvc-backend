@@ -2,8 +2,8 @@
     "configurations": [
         {
             "provider": "mailjet",
-            "sourceEmail": "SecondSight <system@secondsight.ai>",
-            "errorReportingEmail": "asymlabs@gmail.com"
+            "sourceEmail": "Ecortest <sample_project@ecortest.com>",
+            "errorReportingEmail": "tahirmurtaza5152@gmail.com"
         }
     ],
     "events": {
@@ -18,7 +18,7 @@
             "subject": "Reset your password",
             "templateName": "Reset Password (PROD and TEST)",
             "id": {
-                "mailjet": 4781139
+                "mailjet": 6410454
             }
         }
     }

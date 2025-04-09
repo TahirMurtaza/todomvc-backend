@@ -72,6 +72,7 @@ services:
 
   email_transmitter:
     image: ecorrouge/email-transmitter:latest
+    platform: linux/amd64
     container_name: rococo_sample_email_transmitter
     restart: unless-stopped
     networks:
