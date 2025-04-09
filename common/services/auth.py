@@ -174,7 +174,7 @@ class AuthService:
             message = {
                 "event": "RESET_PASSWORD",
                 "data": {
-                    "reset_password_link": password_reset_url
+                    "verify_link": password_reset_url
                 },
                 "to_emails": [email],
             }
