@@ -29,7 +29,8 @@ def create_app():
 
     app = Flask(__name__)
     app.config.from_object(config)
-
+    app.url_map.strict_slashes = False
+    
     with app.app_context():
         set_request_exception_signal(app)
 

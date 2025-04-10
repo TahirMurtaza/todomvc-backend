@@ -18,3 +18,20 @@ class BaseRepository(PostgreSQLRepository):
     ):
         # Pass MODEL as the model to the BaseRepository
         super().__init__(db_adapter, self.MODEL, message_adapter, queue_name, user_id=user_id)
+
+
+    def update(self, filters: dict, updates: dict):
+        """
+        Fetch a single object using filters, apply updates, and save.
+        """
+        obj = self.get_one(filters)
+        if not obj:
+            raise ValueError(f"{self.MODEL.__name__} not found with filters: {filters}")
+
+        for key, value in updates.items():
+            if hasattr(obj, key):
+                setattr(obj, key, value)
+
+        return self.save(obj)
+    
+    
